@@ -1,0 +1,22 @@
+h1 {
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+h2 {
+    color: black;
+}
+body {
+    /* background: linear-gradient(#00ccff, #b7b3ff); */
+    text-align: center;
+    background-image: url(source/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.menu {
+    width: 560px;
+    height: 315px;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: ; */
+}
