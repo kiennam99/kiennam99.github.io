@@ -44,36 +44,55 @@ frameborder="0"
 
     <script>
         // URL of the API
+        const requestOptions = {
+            method: 'GET',
+            headers: {"Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm",},      
+        };
         const headers = {
-            "Authorization": "Bearer "
+            "Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm"
         }
         const apiUrl = 'https://873a-140-113-113-65.ngrok-free.app/v1/';
-        const new_conversation = apiUrl + 'api/conversation/0a32da2070c111efb7f70242ac120006';
+        const new_conversation = apiUrl + 'api/new_conversation/';
 
-        // Create an XMLHttpRequest object
-        const xhr = new XMLHttpRequest();
-
-        // Set up a request
-        xhr.open('GET', new_conversation, true);
-
-        // Define what happens on successful data submission
-        xhr.onload = function() {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                console.log(xhr.responseText);
-                const data = JSON.parse(xhr.responseText);
-                document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
-            } else {
-                console.error('Request failed');
+        fetch(new_conversationm requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network errorr');
             }
-        };
+            return response.json();
+        })
+        .then(
+            data => {
+                document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
+            }
+        )
+        .catch( error => {
+            console.error('Error:', error);
+        })
+        // Create an XMLHttpRequest object
+        // const xhr = new XMLHttpRequest();
 
-        // Define what happens in case of error
-        xhr.onerror = function() {
-            console.error('There was a network error');
-        };
+        // // Set up a request
+        // xhr.open('GET', new_conversation, true);
 
-        // Send the request
-        xhr.send();
+        // // Define what happens on successful data submission
+        // xhr.onload = function() {
+        //     if (xhr.status >= 200 && xhr.status < 300) {
+        //         console.log(xhr.responseText);
+        //         const data = JSON.parse(xhr.responseText);
+        //         document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
+        //     } else {
+        //         console.error('Request failed');
+        //     }
+        // };
+
+        // // Define what happens in case of error
+        // xhr.onerror = function() {
+        //     console.error('There was a network error');
+        // };
+
+        // // Send the request
+        // xhr.send();
     </script>
 </body>
 </html>
