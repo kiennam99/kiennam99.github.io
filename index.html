@@ -57,7 +57,7 @@ frameborder="0"
         xhr.onload = function() {
             if (xhr.status >= 200 && xhr.status < 300) {
                 const data = JSON.parse(xhr.responseText);
-                document.getElementById('data').innerText = JSON.stringify(data, null, 2);
+                document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
             } else {
                 console.error('Request failed');
             }
