@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XMLHttpRequest Example</title>
 </head>
-
 <body>
     <h1>XMLHttpRequest Example</h1>
     <div id="apiData">Loading data...</div>
@@ -15,46 +13,37 @@
         // URL of the API
         const requestOptions = {
             method: 'GET',
-            headers: {
-                "Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm",
-                'user_id': "kiennam99",
-                "Accept": 'application/json',
-                "Content-Type": 'application/json',
-                "ngrok-skip-browser-warning": "69420",
-            },
+            headers: {"Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm",},      
         };
         const headers = {
             "Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm"
         }
         const apiUrl = 'https://873a-140-113-113-65.ngrok-free.app/v1/';
-        const new_conversation = apiUrl + 'api/new_conversation';
-        console.log(new_conversation);
-        fetch(new_conversation, requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network errorr');
-                }
-                return response.json();
-            })
-            .then(
-                data => {
-                    console.log(data);
-                    document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
-                })
-            .catch(error => {
-                console.log(error);
-                console.error('Error:', error);
-            })
+        const new_conversation = apiUrl + 'api/new_conversation/';
 
-
+        fetch(new_conversation,requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network errorr');
+            }
+            return response.json();
+        })
+        .then(
+            data => {
+                document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
+            }
+        )
+        .catch( error => {
+            console.error('Error:', error);
+        })
         // Create an XMLHttpRequest object
         // const xhr = new XMLHttpRequest();
 
         // // Set up a request
         // xhr.open('GET', new_conversation, true);
 
-        // // // Define what happens on successful data submission
-        // xhr.onload = function () {
+        // // Define what happens on successful data submission
+        // xhr.onload = function() {
         //     if (xhr.status >= 200 && xhr.status < 300) {
         //         console.log(xhr.responseText);
         //         const data = JSON.parse(xhr.responseText);
@@ -64,14 +53,13 @@
         //     }
         // };
 
-        // // // Define what happens in case of error
-        // xhr.onerror = function () {
+        // // Define what happens in case of error
+        // xhr.onerror = function() {
         //     console.error('There was a network error');
         // };
 
-        // // // Send the request
+        // // Send the request
         // xhr.send();
     </script>
 </body>
-
 </html>
