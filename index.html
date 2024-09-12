@@ -4,22 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-
+    <title>XMLHttpRequest Example</title>
 </head>
 
 <body>
-    <h1>HiS</h1>
-    <h2>hey
-        Ho
-    </h2>
-    <div class="menu">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/5IEfRrRMxXc?si=JGErFOtqesl_QjVF"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    <h1>XMLHttpRequest Example</h1>
+    <div id="apiData">Loading data...</div>
+
+    <script>
+        // URL of the API
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                "Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm",
+                'user_id': "kiennam99",
+                "Accept": 'application/json',
+                "Content-Type": 'application/json',
+                "ngrok-skip-browser-warning": "69420",
+            },
+        };
+        const headers = {
+            "Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm"
+        }
+        const apiUrl = 'https://873a-140-113-113-65.ngrok-free.app/v1/';
+        const new_conversation = apiUrl + 'api/new_conversation';
+        console.log(new_conversation);
+        fetch(new_conversation, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network errorr');
+                }
+                return response.json();
+            })
+            .then(
+                data => {
+                    console.log(data);
+                    document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
+                })
+            .catch(error => {
+                console.log(error);
+                console.error('Error:', error);
+            })
+
+
+        // Create an XMLHttpRequest object
+        // const xhr = new XMLHttpRequest();
+
+        // // Set up a request
+        // xhr.open('GET', new_conversation, true);
+
+        // // // Define what happens on successful data submission
+        // xhr.onload = function () {
+        //     if (xhr.status >= 200 && xhr.status < 300) {
+        //         console.log(xhr.responseText);
+        //         const data = JSON.parse(xhr.responseText);
+        //         document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
+        //     } else {
+        //         console.error('Request failed');
+        //     }
+        // };
+
+        // // // Define what happens in case of error
+        // xhr.onerror = function () {
+        //     console.error('There was a network error');
+        // };
+
+        // // // Send the request
+        // xhr.send();
+    </script>
 </body>
 
 </html>
