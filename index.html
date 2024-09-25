@@ -1,41 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XMLHttpRequest Example</title>
+    <title>Ragflow Example</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>XMLHttpRequest Example</h1>
-    <div id="apiData">Loading data...</div>
 
-    <script>
+<body>
+    <h1>Ragflow Example</h1>
+    <!-- <div id="apiData">Loading data...</div> -->
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Chat with Bot</h2>
+            <!-- Button to start a new conversation -->
+            <button id="new-convo-btn" onclick="startNewConversation()">Start New Conversation</button>
+        </div>
+        <div class="chat-window" id="chat-window">
+            <!-- Messages will appear here -->
+            <div id="loading-indicator" class="hidden">Bot is typing...</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message..." disabled>
+            <button onclick="sendMessage()" disabled>Send</button>
+        </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+
+    <script src="script.js"></script>
+    <!-- <script>
         // URL of the API
         const requestOptions = {
             method: 'GET',
-            headers: {"Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm",},      
+            headers: {
+                "Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm",
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
+            },
         };
-        const headers = {
-            "Authorization": "Bearer ragflow-JkYjZjZjZhNzBiYzExZWZhYmQ4MDI0Mm"
-        }
-        const apiUrl = 'https://873a-140-113-113-65.ngrok-free.app/v1/';
+
+        const apiUrl = 'https://1a70-140-113-113-65.ngrok-free.app/v1/';
         const new_conversation = apiUrl + 'api/new_conversation/';
 
-        fetch(new_conversation,requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network errorr');
-            }
-            return response.json();
-        })
-        .then(
-            data => {
-                document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
-            }
-        )
-        .catch( error => {
-            console.error('Error:', error);
-        })
+        fetch(new_conversation, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network errorr');
+                }
+                return response.json();
+            })
+            .then(
+                data => {
+                    document.getElementById('apiData').innerText = JSON.stringify(data, null, 2);
+                }
+            )
+            .catch(error => {
+                console.error('Error:', error);
+            })
+
         // Create an XMLHttpRequest object
         // const xhr = new XMLHttpRequest();
 
@@ -60,6 +85,7 @@
 
         // // Send the request
         // xhr.send();
-    </script>
+    </script> -->
 </body>
+
 </html>
